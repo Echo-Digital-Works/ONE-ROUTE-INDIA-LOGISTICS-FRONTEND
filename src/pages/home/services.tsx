@@ -4,6 +4,7 @@ import { Truck, MapPin, PackageCheck, ArrowRight, X, Boxes, type LucideIcon } fr
 
 // --- TYPES ---
 interface Service {
+  id: string; 
   title: string;
   desc: string;
   details: string;
@@ -32,7 +33,6 @@ const cardVariants = {
 };
 
 // --- SERVICE SCENE COMPONENTS ---
-
 const RoadFreightScene = () => (
   <div className="relative w-full h-32 bg-slate-100 rounded-2xl overflow-hidden flex items-center justify-center mb-6 border border-slate-200">
     <div className="absolute inset-x-0 bottom-10 h-1 bg-slate-300/50" />
@@ -49,15 +49,10 @@ const RoadFreightScene = () => (
 const SupplyChainScene = () => (
   <div className="relative w-full h-32 bg-slate-50 rounded-2xl overflow-hidden mb-6 flex items-center justify-center border border-slate-100">
     <div className="relative w-[80%] h-10 flex items-center">
-      {/* Dashed Path */}
       <div className="absolute inset-x-0 h-[2px] border-t-2 border-dashed border-slate-300 top-1/2 -translate-y-1/2" />
-      
-      {/* Start Pin */}
       <div className="absolute left-0 z-20 bg-white rounded-full p-1 shadow-md -translate-x-1/2">
         <MapPin className="text-red-500 w-6 h-6" />
       </div>
-
-      {/* Animated Truck - Full width travel */}
       <motion.div
         initial={{ left: "0%" }}
         animate={{ left: "100%" }}
@@ -66,8 +61,6 @@ const SupplyChainScene = () => (
       >
         <Truck className="w-8 h-8 text-yellow-600 drop-shadow-lg" />
       </motion.div>
-
-      {/* End Pin */}
       <div className="absolute right-0 z-20 bg-white rounded-full p-1 shadow-md translate-x-1/2">
         <MapPin className="text-blue-500 w-6 h-6" />
       </div>
@@ -96,6 +89,7 @@ export default function Services() {
 
   const services: Service[] = [
     { 
+      id: 'road-freight',
       title: 'Road Freight', 
       desc: 'Extensive fleet of modern trucks ensuring reliable overland transport across India.', 
       details: 'Our road freight solutions utilize GPS-enabled Taurus trucks and heavy-duty lorries to ensure 100% safe transit with real-time tracking.',
@@ -103,6 +97,7 @@ export default function Services() {
       scene: <RoadFreightScene />
     },
     { 
+      id: 'supply-chain',
       title: 'Supply Chain', 
       desc: 'End-to-end optimization of your logistics flow, reducing costs and transit times.', 
       details: 'We integrate advanced analytics to streamline your procurement and distribution, ensuring a seamless flow from origin to destination.',
@@ -110,16 +105,20 @@ export default function Services() {
       scene: <SupplyChainScene />
     },
     { 
+      id: 'warehousing',
       title: 'Warehousing', 
       desc: 'State-of-the-art storage facilities with advanced inventory management systems.', 
-      details: 'Our facilities offer automated sorting and real-time stock auditing for maximum efficiency with climate-controlled zones.', 
+      details: 'We’ve partnered with premium warehouse facilities to offer you a seamless, one-stop logistics experience. Whether you need short-term storage or complex distribution support, our new warehousing tie-ups ensure your cargo is handled with precision and care..', 
       icon: PackageCheck,
       scene: <WarehousingScene />
     }
   ];
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-slate-50 relative overflow-hidden">
+    /* CRITICAL: The id="services-page" ensures this specific section is targetable. 
+      The 'scroll-mt-24' handles the offset if you have a sticky navbar.
+    */
+    <section id="services-page" className="py-16 sm:py-24 md:py-32 bg-slate-50 relative overflow-hidden scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={headerVariants}
@@ -129,25 +128,30 @@ export default function Services() {
             <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
             <span className="text-sm font-bold uppercase tracking-widest">Our Expertise</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">Comprehensive Logistics Solutions</h2>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">Comprehensive Logistics Solutions</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {services.map((service, i) => (
             <motion.div 
-              key={service.title} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}
+              key={service.title} 
+              id={service.id} 
+              custom={i} 
+              initial="hidden" 
+              whileInView="visible" 
+              viewport={{ once: true }} 
+              variants={cardVariants}
               onClick={() => setSelectedService(service)}
-              className="group relative bg-white hover:bg-[#0f172a] p-10 rounded-[2.5rem] shadow-xl cursor-pointer overflow-hidden h-full flex flex-col transition-all duration-300 hover:-translate-y-2 border border-slate-100 hover:border-white/10"
+              className="group relative bg-white hover:bg-[#0f172a] p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2.5rem] shadow-xl cursor-pointer overflow-hidden h-full flex flex-col transition-all duration-300 hover:-translate-y-2 border border-slate-100 hover:border-white/10 scroll-mt-20"
             >
-              {/* Subtle background icon decoration - only visible on hover */}
               <service.icon className="absolute -bottom-10 -right-10 w-40 h-40 text-white/[0.03] rotate-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div className="relative z-10">
-                <div className="w-14 h-14 rounded-2xl bg-slate-100 group-hover:bg-yellow-500 flex items-center justify-center mb-8 transition-colors duration-300">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-slate-100 group-hover:bg-yellow-500 flex items-center justify-center mb-6 sm:mb-8 transition-colors duration-300">
                   <service.icon className="w-7 h-7 text-slate-900" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-slate-900 group-hover:text-white transition-colors duration-300">{service.title}</h3>
-                <p className="text-slate-600 group-hover:text-slate-400 leading-relaxed mb-8 transition-colors duration-300">{service.desc}</p>
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-slate-900 group-hover:text-white transition-colors duration-300">{service.title}</h3>
+                <p className="text-sm sm:text-base text-slate-600 group-hover:text-slate-400 leading-relaxed mb-6 sm:mb-8 transition-colors duration-300">{service.desc}</p>
                 <div className="flex items-center text-yellow-600 group-hover:text-yellow-500 font-bold transition-all duration-300 group-hover:gap-2">
                   Explore Service <ArrowRight className="ml-2 w-4 h-4" />
                 </div>
@@ -170,7 +174,7 @@ export default function Services() {
               initial={{ scale: 0.9, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 50 }}
-              className="relative bg-white w-full max-w-lg rounded-[2.5rem] p-8 md:p-10 shadow-2xl overflow-hidden"
+              className="relative bg-white w-full max-w-lg rounded-2xl sm:rounded-[2.5rem] p-6 sm:p-8 md:p-10 shadow-2xl overflow-hidden"
             >
               <button onClick={() => setSelectedService(null)} className="absolute top-6 right-6 p-2 rounded-full hover:bg-slate-100 transition-colors z-20">
                 <X className="w-6 h-6 text-slate-400" />
