@@ -1,7 +1,28 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Truck, MapPin, Clock, ShieldCheck, History, Handshake, TrendingUp } from 'lucide-react';
 
 export default function About() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const aboutImages = [
+    '/images/lorry image 9.jpeg',
+    '/images/lorry image 1.jpeg',
+    '/images/lorry image 2.jpeg',
+    '/images/lorry image 3.jpeg',
+    '/images/lorry image 6.jpeg',
+    '/images/lorry image 7.jpeg',
+    '/images/lorry image 8.jpeg',
+    '/images/lorry image 10.jpeg',
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % aboutImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   const milestones = [
     { 
       year: "2008", 
@@ -30,10 +51,10 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <section id="about" className="py-16 sm:py-24 bg-white overflow-hidden scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
         
-        {/* Left Side: Lorry Image */}
+        {/* Left Side: Lorry Image Carousel */}
         <motion.div 
           initial={{ opacity: 0, x: -60 }} 
           whileInView={{ opacity: 1, x: 0 }} 
@@ -41,12 +62,19 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="relative aspect-square rounded-2xl bg-black overflow-hidden shadow-2xl group"
         >
-          <img 
-            src="/images/taurus-25-ton-transportation-service.jpg" 
-            alt="One Route Lorry" 
-            className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <AnimatePresence>
+            <motion.img 
+              key={currentImageIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              src={aboutImages[currentImageIndex]} 
+              alt="One Route Lorry" 
+              className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" 
+            />
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 pointer-events-none"></div>
         </motion.div>
         
         {/* Right Side: Integrated Business Journey */}
@@ -57,9 +85,9 @@ export default function About() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-sm font-bold text-yellow-500 tracking-widest uppercase mb-2">Our Story</h2>
-          <h3 className="text-4xl font-bold text-slate-900 mb-6">History of OneRoute India Logistics</h3>
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4 sm:mb-6">History of OneRoute India Logistics</h3>
           
-          <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 mb-6 sm:mb-8 leading-relaxed">
             From a single-route transport provider to a nationwide logistics powerhouse, Oneroute India has evolved alongside the infrastructure of the country.
           </p>
 
@@ -113,24 +141,24 @@ export default function About() {
           </div>
 
           {/* Transformation Quote */}
-          <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800 flex items-start gap-4 mb-8 shadow-xl">
-            <div className="bg-yellow-500 p-2 rounded-lg">
-              <TrendingUp className="w-5 h-5 text-slate-900" />
+          <div className="bg-slate-900 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-800 flex items-start gap-3 sm:gap-4 mb-6 sm:mb-8 shadow-xl">
+            <div className="bg-yellow-500 p-2 rounded-lg flex-shrink-0">
+              <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-slate-900" />
             </div>
-            <p className="text-sm text-slate-300 leading-relaxed italic">
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed italic">
               "We leverage decades of ground-level fleet experience to manage a vast partner network, delivering excellence across every state in India."
             </p>
           </div>
           
           {/* Bottom Trust Icons */}
-          <ul className="grid grid-cols-3 gap-4 border-t border-slate-100 pt-6">
+          <ul className="grid grid-cols-3 gap-3 sm:gap-4 border-t border-slate-100 pt-4 sm:pt-6">
             {[
               { icon: MapPin, text: "Pan-India" }, 
               { icon: ShieldCheck, text: "100% Safe" },
               { icon: Clock, text: "On-Time" }
             ].map((item, i) => (
               <li key={i} className="flex items-center text-slate-700 font-bold text-[10px] sm:text-xs uppercase tracking-tight">
-                <item.icon className="w-4 h-4 text-yellow-500 mr-2" /> {item.text}
+                <item.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-yellow-500 mr-1.5 sm:mr-2 flex-shrink-0" /> {item.text}
               </li>
             ))}
           </ul>

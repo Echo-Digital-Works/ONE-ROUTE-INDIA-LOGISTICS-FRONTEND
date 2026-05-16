@@ -22,18 +22,18 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="py-24 bg-black text-white relative overflow-hidden">
+    <section id="contact" ref={sectionRef} className="py-16 sm:py-24 bg-black text-white relative overflow-hidden scroll-mt-20">
       {/* Background FX */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(234,179,8,0.1),transparent_50%)]"></div>
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* SECTION HEADER */}
         <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-black tracking-tighter mb-4"
+            className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter mb-4"
           >
             CONTACT <span className="text-yellow-500">US</span>
           </motion.h2>
@@ -44,9 +44,9 @@ export default function Contact() {
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="bg-gradient-to-br from-slate-900 to-black border border-white/10 rounded-[2.5rem] p-8 md:p-12 mb-16 shadow-2xl relative overflow-hidden"
+          className="bg-gradient-to-br from-slate-900 to-black border border-white/10 rounded-2xl sm:rounded-[2.5rem] p-5 sm:p-8 md:p-12 mb-10 sm:mb-16 shadow-2xl relative overflow-hidden"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             
             {/* Left Column: 3D Image Animation */}
             <div className="relative perspective-1000 flex items-center justify-center py-10">
@@ -61,7 +61,7 @@ export default function Contact() {
               >
                 {/* Replace with your actual HQ Image path */}
                 <img 
-                  src="/images/head quaters.webp" 
+                  src="/images/lorry image 9.jpeg" 
                   alt="Headquarters" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
@@ -81,11 +81,11 @@ export default function Contact() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold uppercase tracking-widest">
                 Registered Office
               </div>
-              <h3 className="text-3xl font-bold">Headquarters</h3>
-              
+              <h3 className="text-2xl sm:text-3xl font-bold">Head Quarters</h3>
+    
               <div className="flex gap-4 items-start">
                 <MapPin className="text-yellow-500 shrink-0 mt-1" size={24} />
-                <p className="text-slate-300 text-lg leading-relaxed">
+                <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
                   19, Muthuswamy Street,<br />
                   Nerungipettai (Post), Anthiyur (Taluk),<br />
                   Erode District - 638311
@@ -113,7 +113,7 @@ export default function Contact() {
                       <ShieldCheck size={16} className="text-yellow-500" /> Founder
                    </div>
                    <div className="flex flex-wrap items-center gap-4">
-                     <p className="font-bold whitespace-nowrap">Durairajsubramani Retired Army (B.COM)</p>
+                     <p className="font-bold text-sm sm:text-base">Durairaj Subramani (BBA) Retired Army </p>
                      <button onClick={() => openWhatsApp("917708992365")} className="flex items-center gap-2 text-yellow-500 hover:text-white transition-colors group text-sm">
                         <Phone size={14} /> +91 77089 92365
                         <MessageSquare size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
@@ -137,30 +137,30 @@ export default function Contact() {
         </div>
 
         {/* BRANCH OFFICES GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-8">
           {/* Branch 1: Chennai */}
           <motion.div 
             whileHover={{ y: -10 }}
-            className="group bg-slate-900/50 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] hover:border-yellow-500/50 transition-all duration-500 shadow-xl"
+            className="group bg-slate-900/50 backdrop-blur-xl border border-white/10 p-5 sm:p-8 rounded-2xl sm:rounded-[2rem] hover:border-yellow-500/50 transition-all duration-500 shadow-xl"
           >
-            <div className="flex justify-between items-start mb-6">
-              <div className="w-14 h-14 bg-yellow-500 rounded-2xl flex items-center justify-center text-black shadow-lg group-hover:scale-110 transition-transform">
-                <MapPin size={28} />
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-11 h-11 sm:w-14 sm:h-14 bg-yellow-500 rounded-xl sm:rounded-2xl flex items-center justify-center text-black shadow-lg group-hover:scale-110 transition-transform flex-shrink-0">
+                <MapPin size={22} />
               </div>
-              <h4 className="text-2xl font-bold">Chennai</h4>
+              <h4 className="text-xl sm:text-2xl font-bold">Chennai</h4>
             </div>
             
-            <p className="text-slate-400 mb-8 leading-relaxed">
+            <p className="text-slate-400 mb-4 sm:mb-8 leading-relaxed text-sm sm:text-base">
               12/10 Market Farm First Street,<br />
               New Washermenpet, Chennai - 600081
             </p>
 
-            <div className="space-y-4">
-              <a href="tel:8124399499" className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-yellow-500 hover:text-black transition-all group/btn">
+            <div className="space-y-3 sm:space-y-4">
+              <a href="tel:8124399499" className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 hover:bg-yellow-500 hover:text-black transition-all group/btn text-sm sm:text-base">
                 <Phone className="group-hover/btn:animate-bounce" />
                 <span className="font-bold">+91 81243 99499</span>
               </a>
-              <a href={`mailto:${mailId}`} className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-yellow-500 hover:text-black transition-all group/btn">
+              <a href={`mailto:${mailId}`} className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 hover:bg-yellow-500 hover:text-black transition-all group/btn text-sm sm:text-base">
                 <Mail className="group-hover/btn:animate-pulse" />
                 <span className="font-bold">{mailId}</span>
               </a>
@@ -170,27 +170,27 @@ export default function Contact() {
           {/* Branch 2: Coimbatore */}
           <motion.div 
             whileHover={{ y: -10 }}
-            className="group bg-slate-900/50 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] hover:border-yellow-500/50 transition-all duration-500 shadow-xl"
+            className="group bg-slate-900/50 backdrop-blur-xl border border-white/10 p-5 sm:p-8 rounded-2xl sm:rounded-[2rem] hover:border-yellow-500/50 transition-all duration-500 shadow-xl"
           >
-            <div className="flex justify-between items-start mb-6">
-              <div className="w-14 h-14 bg-yellow-500 rounded-2xl flex items-center justify-center text-black shadow-lg group-hover:scale-110 transition-transform">
-                <MapPin size={28} />
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-11 h-11 sm:w-14 sm:h-14 bg-yellow-500 rounded-xl sm:rounded-2xl flex items-center justify-center text-black shadow-lg group-hover:scale-110 transition-transform flex-shrink-0">
+                <MapPin size={22} />
               </div>
-              <h4 className="text-2xl font-bold">Coimbatore</h4>
+              <h4 className="text-xl sm:text-2xl font-bold">Coimbatore</h4>
             </div>
             
-            <p className="text-slate-400 mb-8 leading-relaxed">
+            <p className="text-slate-400 mb-4 sm:mb-8 leading-relaxed text-sm sm:text-base">
               437/3 Mariamman Kovil Thottam,<br />
               Sangothipalayam, Kaniyur,<br />
               Coimbatore - 641659
             </p>
 
-            <div className="space-y-4">
-              <a href="tel:8489399499" className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-yellow-500 hover:text-black transition-all group/btn">
+            <div className="space-y-3 sm:space-y-4">
+              <a href="tel:8489399499" className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 hover:bg-yellow-500 hover:text-black transition-all group/btn text-sm sm:text-base">
                 <Phone className="group-hover/btn:animate-bounce" />
                 <span className="font-bold">+91 84893 99499</span>
               </a>
-              <a href={`mailto:${mailId}`} className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-yellow-500 hover:text-black transition-all group/btn">
+              <a href={`mailto:${mailId}`} className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 hover:bg-yellow-500 hover:text-black transition-all group/btn text-sm sm:text-base">
                 <Mail className="group-hover/btn:animate-pulse" />
                 <span className="font-bold">{mailId}</span>
               </a>

@@ -26,32 +26,41 @@ export default function GallerySection() {
   const mainShowcase: Array<{ id: number; img: string; title?: string; desc?: string; tag?: string }> = [
     { 
       id: 1, 
-      img: '/images/download (2).jpg' 
+      img: '/images/lorry image 1.jpeg',
+      title: 'Heavy Duty Fleet',
+      desc: 'Our modern fleet of heavy-duty vehicles.',
+      tag: 'Featured'
     },
     { 
       id: 2, 
-      img: '/images/download (3).jpg' 
+      img: '/images/lorry image 7.jpeg',
+      title: 'Pan-India Delivery',
+      desc: 'Reliable transport across all states.',
+      tag: 'Network'
     },
     { 
       id: 3, 
-      img: '/images/download (4).jpg' 
+      img: '/images/lorry image 8.jpeg',
+      title: 'Secure Transport',
+      desc: 'Ensuring safe delivery of your goods.',
+      tag: 'Safety'
     }
   ];
 
   const collageFleet = useMemo(() => [
-    { url: '/images/download (2).jpg', span: 'md:col-span-2 md:row-span-2' },
-    { url: '/images/download (3).jpg', span: 'md:col-span-1 md:row-span-1' },
-    { url: '/images/download (4).jpg', span: 'md:col-span-1 md:row-span-2' },
-    { url: '/images/download (5).jpg', span: 'md:col-span-1 md:row-span-1' },
-    { url: '/images/download (6).jpg', span: 'md:col-span-2 md:row-span-1' },
-    { url: '/images/images (2).jpg', span: 'md:col-span-1 md:row-span-1' },
-    { url: '/images/download (3).jpg', span: 'md:col-span-1 md:row-span-2' },
-    { url: '/images/download (5).jpg', span: 'md:col-span-2 md:row-span-2' },
+    { url: '/images/lorry image 2.jpeg', span: 'md:col-span-2 md:row-span-2' },
+    { url: '/images/lorry image 3.jpeg', span: 'md:col-span-1 md:row-span-1' },
+    { url: '/images/lorry image 6.jpeg', span: 'md:col-span-1 md:row-span-2' },
+    { url: '/images/lorry image 10.jpeg', span: 'md:col-span-1 md:row-span-1' },
+    { url: '/images/lorry image 1.jpeg', span: 'md:col-span-2 md:row-span-1' },
+    { url: '/images/lorry image 7.jpeg', span: 'md:col-span-1 md:row-span-1' },
+    { url: '/images/lorry image 8.jpeg', span: 'md:col-span-1 md:row-span-2' },
+    { url: '/images/lorry image 9.jpeg', span: 'md:col-span-2 md:row-span-2' },
   ], []);
 
   return (
     <>
-      <section className="py-24 bg-slate-950 relative overflow-hidden">
+      <section className="py-16 sm:py-24 bg-slate-950 relative overflow-hidden">
         {/* Background Ambient Light */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -65,10 +74,10 @@ export default function GallerySection() {
             variants={staggerContainer}
             className="mb-12"
           >
-            <motion.h2 variants={fadeInUp} className="text-sm font-bold text-yellow-500 tracking-widest uppercase mb-2">
+            <motion.h2 variants={fadeInUp} className="text-xs sm:text-sm font-bold text-yellow-500 tracking-widest uppercase mb-2">
               Our Legacy & Fleet
             </motion.h2>
-            <motion.h3 variants={fadeInUp} className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+            <motion.h3 variants={fadeInUp} className="text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
               Tracing the <span className="text-yellow-500">Route</span> of History.
             </motion.h3>
           </motion.div>
@@ -79,13 +88,13 @@ export default function GallerySection() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 mb-8 sm:mb-12"
           >
             {/* Big Feature Lorry */}
             <motion.div 
               variants={scaleIn} 
               onClick={() => setActiveImage(mainShowcase[0].img)}
-              className="lg:col-span-7 group relative rounded-3xl overflow-hidden h-[450px] lg:h-[600px] cursor-pointer border border-slate-800 bg-slate-900"
+              className="lg:col-span-7 group relative rounded-2xl sm:rounded-3xl overflow-hidden h-[280px] sm:h-[450px] lg:h-[600px] cursor-pointer border border-slate-800 bg-slate-900"
             >
               {/* Loading Spinner/Pulse */}
               <div className="absolute inset-0 bg-slate-800 animate-pulse group-hover:hidden" />
@@ -107,13 +116,13 @@ export default function GallerySection() {
             </motion.div>
 
             {/* Side Column */}
-            <div className="lg:col-span-5 flex flex-col gap-6">
+            <div className="lg:col-span-5 grid grid-cols-2 lg:flex lg:flex-col gap-4 sm:gap-6">
               {mainShowcase.slice(1).map((item) => (
                 <motion.div 
                   key={item.id}
                   variants={scaleIn}
                   onClick={() => setActiveImage(item.img)}
-                  className="relative group rounded-3xl overflow-hidden h-[287px] cursor-pointer border border-slate-800 bg-slate-900"
+                  className="relative group rounded-2xl sm:rounded-3xl overflow-hidden h-[180px] sm:h-[220px] lg:h-[287px] cursor-pointer border border-slate-800 bg-slate-900"
                 >
                   <div className="absolute inset-0 bg-slate-800 animate-pulse" />
                   <img 
@@ -139,7 +148,7 @@ export default function GallerySection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsGalleryOpen(true)}
-              className="bg-yellow-500 text-slate-900 px-6 py-4 rounded-2xl shadow-[0_10px_30px_rgba(234,179,8,0.3)] flex items-center gap-3 font-bold group"
+              className="bg-yellow-500 text-slate-900 px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-[0_10px_30px_rgba(234,179,8,0.3)] flex items-center gap-2 sm:gap-3 font-bold group text-sm sm:text-base"
             >
               <ImageIcon className="group-hover:rotate-12 transition-transform" />
               <span>Explore Gallery</span>
@@ -177,7 +186,7 @@ export default function GallerySection() {
             </div>
 
             <div className="p-6 md:p-12 max-w-7xl mx-auto w-full">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[220px]">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[150px] sm:auto-rows-[220px]">
                 {collageFleet.map((item, idx) => (
                   <motion.div
                     key={idx}

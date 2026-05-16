@@ -26,7 +26,7 @@ const floatingAnimation = {
 
 export default function Hero() {
   return (
-    <section id="home" className="relative pt-28 pb-24 md:pt-24 md:pb-32 min-h-screen flex items-center bg-slate-950 text-white overflow-hidden font-sans">
+    <section id="home" className="relative pt-20 pb-16 sm:pt-24 sm:pb-24 md:pt-24 md:pb-32 min-h-screen flex items-center bg-slate-950 text-white overflow-hidden font-sans">
       
       {/* --- BACKGROUND EFFECTS --- */}
       <motion.div 
