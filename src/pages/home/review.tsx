@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// Removed 'Map' as it was causing the unused-variable error
 import { Star, Quote, ArrowRight, ArrowLeft, ClipboardList } from 'lucide-react';
 
 export default function Reviews() {
@@ -10,7 +9,7 @@ export default function Reviews() {
       name: "TechCorp India", 
       text: "Oneroute revolutionized our supply chain. Their on-time delivery rate is unmatched and the service is incredible. They are our permanent logistics partner.", 
       rating: 5,
-      area: "Across India",
+      area: "chennai-mumbai",
       service: "Main City Delivery"
     },
     { 
@@ -18,7 +17,7 @@ export default function Reviews() {
       name: "Global Exports", 
       text: "Safe, secure, and very reliable. We move our goods across the state easily. Oneroute makes long-distance transport completely worry-free for our business.", 
       rating: 5,
-      area: "Within Tamil Nadu",
+      area: "chennai-gujarat",
       service: "Express Transport"
     },
     { 
@@ -26,7 +25,7 @@ export default function Reviews() {
       name: "Retail Solutions", 
       text: "The best storage and road transport combo we've experienced. Highly recommended for any business looking to move products to different states.", 
       rating: 4,
-      area: "All South Indian States",
+      area: "salem-kochi",
       service: "Safe Warehousing"
     },
     { 
@@ -34,7 +33,7 @@ export default function Reviews() {
       name: "AutoMotive Spares", 
       text: "We deal with large machinery and strict timelines. Oneroute's vehicle management is flawless. They deliver exactly when they promise, every single time.", 
       rating: 5,
-      area: "State-wide Coverage",
+      area: "delhi-maharastra",
       service: "Large Load Transport"
     }
   ];
@@ -59,7 +58,10 @@ export default function Reviews() {
   }, [isHovered]);
 
   return (
-    <section id="reviews" className="py-24 bg-slate-50 relative overflow-hidden flex items-center min-h-[80vh]">
+    /* Updated ID to 'clients' to match your Footer link 
+       Added 'scroll-mt-24' so the section isn't cut off by your header when jumping
+    */
+    <section id="clients" className="py-16 sm:py-24 bg-slate-50 relative overflow-hidden flex items-center min-h-[auto] sm:min-h-[80vh] scroll-mt-20">
       
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -82,14 +84,14 @@ export default function Reviews() {
                 <span className="text-sm font-bold tracking-widest uppercase">Client Success</span>
               </div>
               
-              <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-6 leading-tight">
-                Trusted by <br />
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-4 sm:mb-6 leading-tight">
+                Trusted by <br className="hidden sm:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-700">
                   Industry Leaders.
                 </span>
               </h3>
               
-              <p className="text-slate-600 text-lg mb-10 max-w-md">
+              <p className="text-slate-600 text-base sm:text-lg mb-6 sm:mb-10 max-w-md">
                 Don't just take our word for it. See how we've helped businesses simplify their transport and achieve perfect delivery records.
               </p>
 
@@ -97,13 +99,13 @@ export default function Reviews() {
               <div className="flex items-center gap-4">
                 <button 
                   onClick={prevReview}
-                  className="w-14 h-14 rounded-full border-2 border-slate-200 flex items-center justify-center text-slate-600 hover:border-yellow-500 hover:text-yellow-600 hover:bg-yellow-50 transition-all active:scale-95 z-20"
+                  className="w-11 h-11 sm:w-14 sm:h-14 rounded-full border-2 border-slate-200 flex items-center justify-center text-slate-600 hover:border-yellow-500 hover:text-yellow-600 hover:bg-yellow-50 transition-all active:scale-95 z-20"
                 >
                   <ArrowLeft className="w-6 h-6" />
                 </button>
                 <button 
                   onClick={nextReview}
-                  className="w-14 h-14 rounded-full bg-slate-900 flex items-center justify-center text-white hover:bg-yellow-500 hover:text-slate-900 transition-all shadow-xl shadow-slate-900/20 active:scale-95 z-20"
+                  className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-slate-900 flex items-center justify-center text-white hover:bg-yellow-500 hover:text-slate-900 transition-all shadow-xl shadow-slate-900/20 active:scale-95 z-20"
                 >
                   <ArrowRight className="w-6 h-6" />
                 </button>
@@ -113,7 +115,7 @@ export default function Reviews() {
 
           {/* Right Side - The Interactive Stack */}
           <div 
-            className="lg:col-span-7 h-[450px] relative perspective-1000"
+            className="lg:col-span-7 h-[380px] sm:h-[450px] relative perspective-1000"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
@@ -138,7 +140,7 @@ export default function Reviews() {
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     className="absolute top-0 left-0 w-full max-w-lg origin-top"
                   >
-                    <div className="bg-white rounded-3xl p-8 md:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100 relative overflow-hidden group">
+                    <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100 relative overflow-hidden group">
                       
                       <div className="absolute top-8 right-8 w-24 h-24 border-4 border-green-500/20 rounded-full flex items-center justify-center rotate-12 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                         <span className="text-green-500/30 font-bold tracking-widest text-sm -rotate-12">VERIFIED</span>
@@ -156,7 +158,7 @@ export default function Reviews() {
                         <Quote className="w-10 h-10 text-slate-100" />
                       </div>
 
-                      <p className="text-slate-600 text-lg leading-relaxed mb-10 italic">
+                      <p className="text-slate-600 text-sm sm:text-lg leading-relaxed mb-6 sm:mb-10 italic">
                         "{review.text}"
                       </p>
 
