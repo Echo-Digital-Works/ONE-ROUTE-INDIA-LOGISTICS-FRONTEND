@@ -128,7 +128,13 @@ export default function Services() {
             <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
             <span className="text-sm font-bold uppercase tracking-widest">Our Expertise</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">Comprehensive Logistics Solutions</h2>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-6 sm:mb-8">Comprehensive Logistics Solutions</h2>
+          <div className="bg-white border border-slate-200/60 rounded-2xl p-5 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] max-w-2xl mx-auto relative overflow-hidden">
+            <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-500"></div>
+            <p className="text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
+              The company operates in the transport office commission-based service sector.
+            </p>
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
@@ -142,17 +148,17 @@ export default function Services() {
               viewport={{ once: true }} 
               variants={cardVariants}
               onClick={() => setSelectedService(service)}
-              className="group relative bg-white hover:bg-[#0f172a] p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2.5rem] shadow-xl cursor-pointer overflow-hidden h-full flex flex-col transition-all duration-300 hover:-translate-y-2 border border-slate-100 hover:border-white/10 scroll-mt-20"
+              className="group relative bg-white max-sm:bg-[#0f172a] sm:hover:bg-[#0f172a] p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2.5rem] shadow-xl cursor-pointer overflow-hidden h-full flex flex-col transition-all duration-300 sm:hover:-translate-y-2 max-sm:active:[transform:perspective(1000px)_rotateX(10deg)_rotateY(-5deg)_scale(1.02)] max-sm:active:shadow-[0_20px_40px_rgba(234,179,8,0.3)] max-sm:active:z-50 border border-slate-100 max-sm:border-white/10 sm:hover:border-white/10 scroll-mt-20"
             >
-              <service.icon className="absolute -bottom-10 -right-10 w-40 h-40 text-white/[0.03] rotate-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <service.icon className="absolute -bottom-10 -right-10 w-40 h-40 text-white/[0.03] rotate-12 opacity-0 max-sm:opacity-100 sm:group-hover:opacity-100 transition-opacity duration-300" />
 
               <div className="relative z-10">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-slate-100 group-hover:bg-yellow-500 flex items-center justify-center mb-6 sm:mb-8 transition-colors duration-300">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-slate-100 max-sm:bg-yellow-500 sm:group-hover:bg-yellow-500 flex items-center justify-center mb-6 sm:mb-8 transition-colors duration-300">
                   <service.icon className="w-7 h-7 text-slate-900" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-slate-900 group-hover:text-white transition-colors duration-300">{service.title}</h3>
-                <p className="text-sm sm:text-base text-slate-600 group-hover:text-slate-400 leading-relaxed mb-6 sm:mb-8 transition-colors duration-300">{service.desc}</p>
-                <div className="flex items-center text-yellow-600 group-hover:text-yellow-500 font-bold transition-all duration-300 group-hover:gap-2">
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-slate-900 max-sm:text-white sm:group-hover:text-white transition-colors duration-300">{service.title}</h3>
+                <p className="text-sm sm:text-base text-slate-600 max-sm:text-slate-400 sm:group-hover:text-slate-400 leading-relaxed mb-6 sm:mb-8 transition-colors duration-300">{service.desc}</p>
+                <div className="flex items-center text-yellow-600 max-sm:text-yellow-500 sm:group-hover:text-yellow-500 font-bold transition-all duration-300 max-sm:gap-2 sm:group-hover:gap-2">
                   Explore Service <ArrowRight className="ml-2 w-4 h-4" />
                 </div>
               </div>
