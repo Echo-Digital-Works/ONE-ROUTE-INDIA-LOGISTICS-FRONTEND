@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, MessageSquare, ShieldCheck, User } from 'lucide-re
 import { useRef } from 'react';
 
 export default function Contact() {
-  const mailId = "onerouteindia@gmail.com";
+  const mailId = "contact@onerouteindia.com";
   const sectionRef = useRef(null);
 
   // Scroll-based 3D rotation logic
@@ -69,8 +69,9 @@ export default function Contact() {
                 {/* Overlay with Logo or Text */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
                   <div>
-                    <p className="text-yellow-500 font-black text-xs uppercase tracking-widest">Main Hub</p>
-                    <h4 className="text-xl font-bold">One Route Logistics</h4>
+                    <p className="text-yellow-500 font-black text-xs uppercase tracking-widest mb-1">Main Hub</p>
+                    <h4 className="text-xl font-bold mb-1">OneRoute India Logistics</h4>
+                    <p className="text-[8px] sm:text-[10px] text-slate-300 font-bold tracking-[0.15em] uppercase">Driven by Trust, Delivered with Care</p>
                   </div>
                 </div>
               </motion.div>
@@ -100,9 +101,8 @@ export default function Contact() {
                    </div>
                    <div className="flex flex-wrap items-center gap-4">
                      <p className="font-bold">Prabu Mohan B.E</p>
-                     <button onClick={() => openWhatsApp("919894273384")} className="flex items-center gap-2 text-yellow-500 hover:text-white transition-colors group text-sm">
-                        <Phone size={14} /> +91 98942 73384
-                        <MessageSquare size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
+                     <button onClick={() => openWhatsApp("919894273384")} className="flex items-center gap-2 text-yellow-500 hover:text-white transition-all hover:scale-110 active:scale-95 group text-sm">
+                        <MessageSquare size={16} className="ml-1" />
                      </button>
                    </div>
                 </div>
@@ -114,9 +114,8 @@ export default function Contact() {
                    </div>
                    <div className="flex flex-wrap items-center gap-4">
                      <p className="font-bold text-sm sm:text-base">Durairaj Subramani (BBA) Retired Army </p>
-                     <button onClick={() => openWhatsApp("917708992365")} className="flex items-center gap-2 text-yellow-500 hover:text-white transition-colors group text-sm">
-                        <Phone size={14} /> +91 77089 92365
-                        <MessageSquare size={14} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
+                     <button onClick={() => openWhatsApp("917708992365")} className="flex items-center gap-2 text-yellow-500 hover:text-white transition-all hover:scale-110 active:scale-95 group text-sm">
+                        <MessageSquare size={16} className="ml-1" />
                      </button>
                    </div>
                 </div>
