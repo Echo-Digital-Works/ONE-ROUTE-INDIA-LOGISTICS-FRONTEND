@@ -37,8 +37,10 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/4 w-64 h-64 md:w-96 md:h-96 bg-yellow-500/10 rounded-full blur-[100px] md:blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-slate-500/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none"></div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+
+      <div className="relative w-full mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-24 items-center">
           
           {/* --- LEFT COLUMN: TYPOGRAPHY & CTA --- */}
           <motion.div 
@@ -47,13 +49,6 @@ export default function Hero() {
             animate="visible"
             className="max-w-3xl pt-4 lg:pt-0"
           >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-3 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-slate-900 border border-slate-800 shadow-xl mb-6 md:mb-8 group cursor-default">
-              <span className="relative flex h-2.5 w-2.5 md:h-3 md:w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 md:h-3 md:w-3 bg-green-500"></span>
-              </span>
-            </motion.div>
-
             <motion.h1 variants={fadeInUp} className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 leading-[1.1]">
               Connecting Every <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Corner of India.</span>
@@ -64,7 +59,7 @@ export default function Hero() {
             </motion.p>
             
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center gap-4">
-              <a href="#services" className="w-full sm:w-auto px-8 py-3.5 md:py-4 bg-yellow-500 text-slate-950 font-bold rounded-xl hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] flex items-center justify-center gap-2 group">
+              <a href="#services-page" className="w-full sm:w-auto px-8 py-3.5 md:py-4 bg-yellow-500 text-slate-950 font-bold rounded-xl hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] flex items-center justify-center gap-2 group">
                 Explore Services
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>

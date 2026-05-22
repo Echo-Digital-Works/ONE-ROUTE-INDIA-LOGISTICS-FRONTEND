@@ -16,7 +16,7 @@ export default function Navbar() {
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       particles.push({
         id: i,
-        initialX: (i * 20) - 200, 
+        initialX: (i * 20) - 200,
         targetX: (i * 30) - 300,
         duration: 2 + (i % 3),
         color: COLORS[i % COLORS.length]
@@ -27,6 +27,17 @@ export default function Navbar() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const message = `*OneRoute India Logistics - New Enquiry Notification*
+
+*Name:* ${formData.name}
+*Mobile:* ${formData.mobile}
+*Email:* ${formData.email}
+*Requirement:* ${formData.query}`;
+
+    const whatsappUrl = `https://wa.me/917708992365?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+
     setIsSubmitted(true);
     setTimeout(() => {
       setIsOpen(false);
@@ -39,52 +50,80 @@ export default function Navbar() {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Founder', href: '#founder' },
-    { name: 'Services', href: '#services-page' }, 
+    { name: 'Services', href: '#services-page' },
     { name: 'Reviews', href: '#clients' },
     { name: 'Contact', href: '#contact' }
   ];
 
   return (
     <>
-      <motion.nav 
+      <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, type: 'spring', bounce: 0.2 }}
         className="fixed w-full z-50 bg-slate-900/95 backdrop-blur-sm shadow-md"
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="w-full mx-auto px-3 sm:px-6 lg:px-12 xl:px-24 relative">
           <div className="flex justify-between h-14 sm:h-20 items-center gap-2">
-            <motion.div 
-              whileHover={{ scale: 1.05 }} 
+            <motion.div
+              whileHover={{ scale: 1.05 }}
               className="flex-shrink-0 flex items-center gap-2 sm:gap-3 cursor-pointer group"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               {/* LOGO */}
-              <div className="relative w-8 h-8 sm:w-12 sm:h-12 bg-yellow-500 rounded-full flex items-center justify-center overflow-hidden shadow-lg shadow-yellow-500/30 border-2 border-yellow-500 flex-shrink-0">
-                <img 
+              <motion.div 
+                className="relative w-8 h-8 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center overflow-hidden shadow-lg shadow-yellow-500/30 border-2 border-yellow-500 flex-shrink-0"
+                style={{ perspective: 800 }}
+                animate={{ rotateY: 360 }}
+                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+              >
+                <img
                   src="/images/oneroute logo.jpeg"
                   alt="OneRoute Logo"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-contain p-0.5"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = "https://ui-avatars.com/api/?name=R&background=eab308&color=0f172a";
+                    target.src = "https://ui-avatars.com/api/?name=O&background=eab308&color=0f172a";
                   }}
                 />
+              </motion.div>
+              <div className="flex flex-col justify-center">
+                <span className="font-extrabold text-[14px] sm:text-xl md:text-2xl tracking-tight text-white whitespace-nowrap leading-tight">
+                  OneRoute <span className="text-yellow-500 font-semibold">India Logistics</span>
+                </span>
+                <motion.div
+                  className="text-[6.5px] sm:text-[9px] md:text-[10px] font-bold tracking-[0.15em] uppercase mt-0.5 sm:mt-0 flex"
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: { opacity: 1, transition: { staggerChildren: 0.04, delayChildren: 0.3 } }
+                  }}
+                >
+                  {"Driven by Trust, Delivered with Care".split("").map((char, index) => (
+                    <motion.span
+                      key={index}
+                      variants={{
+                        hidden: { opacity: 0, y: 5, filter: "blur(2px)", color: "#94a3b8" },
+                        visible: { opacity: 1, y: 0, filter: "blur(0px)", color: "#cbd5e1" }
+                      }}
+                      whileHover={{ color: "#eab308", y: -2, transition: { duration: 0.1 } }}
+                      className="inline-block cursor-default"
+                      style={{ whiteSpace: 'pre' }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </motion.div>
               </div>
-              <span className="font-bold text-[11px] sm:text-lg md:text-2xl tracking-wide text-white whitespace-nowrap">
-                <span className="hidden sm:inline">OneRoute</span>
-                <span className="sm:hidden">OR</span>
-                {' '}
-                <span className="text-yellow-500">India Logistics</span>
-              </span>
             </motion.div>
 
             {/* Desktop Nav Links */}
             <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
               {navLinks.map((item) => (
-                <motion.a 
-                  key={item.name} 
-                  href={item.href} 
+                <motion.a
+                  key={item.name}
+                  href={item.href}
                   whileHover={{ y: -2, color: '#eab308' }}
                   className="text-slate-200 transition-colors font-medium cursor-pointer text-sm lg:text-base"
                 >
@@ -123,6 +162,28 @@ export default function Navbar() {
           </div>
         </div>
 
+        {/* --- FULL WIDTH 3D RUNNING MARQUEE UNDER NAVBAR --- */}
+        <div className="w-full bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-t border-yellow-500/20 overflow-hidden py-1.5 sm:py-2 shadow-lg perspective-1000">
+           <motion.div
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              className="whitespace-nowrap flex items-center gap-8 sm:gap-16 w-fit pl-8 sm:pl-16"
+           >
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className="flex items-center gap-8 sm:gap-16">
+                  <motion.span 
+                    animate={{ z: [0, 20, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, delay: i * 0.4 }}
+                    className="text-xs sm:text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-500 uppercase tracking-[0.2em] drop-shadow-[0_0_10px_rgba(234,179,8,0.3)] inline-block"
+                  >
+                    Part of Mazhigilvin Groups
+                  </motion.span>
+                  <span className="text-yellow-500/30 text-[10px] sm:text-xs">✦</span>
+                </div>
+              ))}
+           </motion.div>
+        </div>
+
         {/* Mobile Menu Dropdown */}
         <AnimatePresence>
           {mobileMenuOpen && (
@@ -153,7 +214,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -171,7 +232,7 @@ export default function Navbar() {
             >
               {!isSubmitted ? (
                 <>
-                  <button 
+                  <button
                     onClick={() => setIsOpen(false)}
                     className="absolute top-4 right-4 sm:top-6 sm:right-6 text-slate-400 hover:text-white transition-colors z-30 w-10 h-10 flex items-center justify-center rounded-full bg-slate-800/80 border border-slate-600"
                   >
@@ -185,11 +246,11 @@ export default function Navbar() {
                     <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold text-yellow-500 uppercase tracking-[0.2em] pl-1">Full Name</label>
-                        <input 
+                        <input
                           required
-                          type="text" 
+                          type="text"
                           value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           className="w-full bg-slate-800/40 border border-slate-700 rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-white focus:outline-none focus:border-yellow-500 transition-all shadow-inner text-sm sm:text-base"
                           placeholder="Your Name"
                         />
@@ -198,22 +259,22 @@ export default function Navbar() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         <div className="space-y-1">
                           <label className="text-[10px] font-bold text-yellow-500 uppercase tracking-[0.2em] pl-1">Mobile</label>
-                          <input 
+                          <input
                             required
-                            type="tel" 
+                            type="tel"
                             value={formData.mobile}
-                            onChange={(e) => setFormData({...formData, mobile: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
                             className="w-full bg-slate-800/40 border border-slate-700 rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-white focus:outline-none focus:border-yellow-500 transition-all shadow-inner text-sm sm:text-base"
                             placeholder="+91..."
                           />
                         </div>
                         <div className="space-y-1">
                           <label className="text-[10px] font-bold text-yellow-500 uppercase tracking-[0.2em] pl-1">Email</label>
-                          <input 
+                          <input
                             required
-                            type="email" 
+                            type="email"
                             value={formData.email}
-                            onChange={(e) => setFormData({...formData, email: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             className="w-full bg-slate-800/40 border border-slate-700 rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-white focus:outline-none focus:border-yellow-500 transition-all shadow-inner text-sm sm:text-base"
                             placeholder="mail@company.com"
                           />
@@ -222,11 +283,11 @@ export default function Navbar() {
 
                       <div className="space-y-1">
                         <label className="text-[10px] font-bold text-yellow-500 uppercase tracking-[0.2em] pl-1">Your Requirement</label>
-                        <textarea 
+                        <textarea
                           required
                           rows={3}
                           value={formData.query}
-                          onChange={(e) => setFormData({...formData, query: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, query: e.target.value })}
                           className="w-full bg-slate-800/40 border border-slate-700 rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-white focus:outline-none focus:border-yellow-500 transition-all shadow-inner resize-none text-sm sm:text-base"
                           placeholder="Cargo details or destination..."
                         />
@@ -245,7 +306,7 @@ export default function Navbar() {
                   </div>
                 </>
               ) : (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   className="relative text-center py-10 flex flex-col items-center justify-center overflow-hidden"
@@ -281,8 +342,8 @@ export default function Navbar() {
                     </p>
                   </div>
 
-                  <motion.div 
-                    animate={{ y: [0, -20, 0] }} 
+                  <motion.div
+                    animate={{ y: [0, -20, 0] }}
                     transition={{ duration: 4, repeat: Infinity }}
                     className="absolute top-0 right-10 text-slate-700/30 -z-10"
                   >
