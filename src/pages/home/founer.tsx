@@ -94,19 +94,8 @@ function FounderHero() {
             <div className="absolute w-[60%] h-[60%] bg-yellow-500/10 rounded-full blur-[80px] pointer-events-none"></div>
 
             <div className="relative z-10 w-full max-w-[240px] sm:max-w-sm mx-auto aspect-[3/4] rounded-3xl overflow-hidden border-2 border-slate-700/50 shadow-[0_30px_80px_-20px_rgba(234,179,8,0.25)] bg-slate-900 group">
-              {/* Dummy Founder Photo - Replace src with actual founder photo when available */}
+              {/* Blank Founder Photo Area */}
               <div className="w-full h-full bg-slate-800 flex items-center justify-center overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=600&auto=format&fit=crop"
-                  alt="Founder S. Mohan"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[20%] group-hover:grayscale-0"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    // Fallback to UI avatar if Unsplash image fails to load
-                    target.onerror = null; // Prevent infinite loop
-                    target.src = "https://ui-avatars.com/api/?name=S+Mohan&background=eab308&color=0f172a&size=512";
-                  }}
-                />
               </div>
 
               {/* Gradient Overlay */}
@@ -119,7 +108,7 @@ function FounderHero() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <p className="text-yellow-500 text-[10px] sm:text-xs font-black tracking-[0.3em] uppercase mb-1">Founder & Veteran</p>
+                  <p className="text-yellow-500 text-[10px] sm:text-xs font-black tracking-[0.3em] uppercase mb-1">Founder</p>
                   <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">S. MOHAN</h2>
                   <div className="h-1 w-12 bg-yellow-500 rounded-full mt-2"></div>
                 </motion.div>
@@ -153,9 +142,14 @@ function FounderHero() {
               <h3 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight mb-1.5">
                 S. Mohan
               </h3>
-              <p className="text-yellow-500 font-bold text-xs sm:text-base uppercase tracking-wider">
-                Founder & Logistics Veteran
-              </p>
+              <div className="mb-2">
+                <p className="text-yellow-500 font-bold text-xs sm:text-base uppercase tracking-wider">
+                  Founder of OneRoute india Logistics
+                </p>
+                <p className="text-slate-400 font-bold text-[8px] sm:text-[10px] uppercase tracking-[0.15em] mt-1">
+                  Driven by Trust, Delivered with Care
+                </p>
+              </div>
             </motion.div>
 
             <motion.p variants={fadeUp} className="text-slate-400 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-8 max-w-xl">

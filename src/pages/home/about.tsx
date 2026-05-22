@@ -85,7 +85,10 @@ export default function About() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-sm font-bold text-yellow-500 tracking-widest uppercase mb-2">Our Story</h2>
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4 sm:mb-6">History of OneRoute India Logistics</h3>
+          <div className="mb-4 sm:mb-6">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-1 sm:mb-2">History of OneRoute India Logistics</h3>
+            <p className="text-[10px] sm:text-xs font-black text-slate-500 uppercase tracking-[0.15em]">Driven by Trust, Delivered with Care</p>
+          </div>
           
           <p className="text-base sm:text-lg text-slate-600 mb-6 sm:mb-8 leading-relaxed">
             From a single-route transport provider to a nationwide logistics powerhouse, Oneroute India has evolved alongside the infrastructure of the country.

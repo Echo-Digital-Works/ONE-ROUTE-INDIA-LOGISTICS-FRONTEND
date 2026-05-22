@@ -104,7 +104,7 @@ export default function GallerySection() {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                 onLoad={(e) => (e.currentTarget.previousElementSibling as HTMLElement).style.display = 'none'}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent pointer-events-none" />
               <div className="absolute bottom-0 left-0 p-8 z-10">
                 {mainShowcase[0].tag && <span className="px-3 py-1 bg-yellow-500 text-slate-900 text-[10px] font-bold rounded-full uppercase mb-4 inline-block">{mainShowcase[0].tag}</span>}
                 {mainShowcase[0].title && <h4 className="text-3xl font-bold text-white mb-2">{mainShowcase[0].title}</h4>}
@@ -131,8 +131,8 @@ export default function GallerySection() {
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                     onLoad={(e) => (e.currentTarget.previousElementSibling as HTMLElement).style.display = 'none'}
                   />
-                  <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-transparent transition-colors" />
-                  <div className="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-slate-950/90 to-transparent z-10">
+                  {/* Removed dark overlay for clear image */}
+                  <div className="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-slate-950/80 to-transparent z-10 pointer-events-none">
                     {item.tag && <span className="text-yellow-500 text-[10px] font-bold tracking-widest uppercase mb-1">{item.tag}</span>}
                     {item.title && <h4 className="text-xl font-bold text-white">{item.title}</h4>}
                     {item.desc && <p className="text-sm text-slate-300 mt-1 line-clamp-2">{item.desc}</p>}
