@@ -70,23 +70,51 @@ export default function Navbar() {
               className="flex-shrink-0 flex items-center gap-2 sm:gap-3 cursor-pointer group"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              {/* LOGO */}
-              <motion.div 
-                className="relative w-8 h-8 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center overflow-hidden shadow-lg shadow-yellow-500/30 border-2 border-yellow-500 flex-shrink-0"
-                style={{ perspective: 800 }}
-                animate={{ rotateY: 360 }}
-                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-              >
-                <img
-                  src="/images/oneroute logo.jpeg"
-                  alt="OneRoute Logo"
-                  className="w-full h-full object-contain p-0.5"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "https://ui-avatars.com/api/?name=O&background=eab308&color=0f172a";
+              {/* --- 3D NON-INVERTING ROTATING LOGO CONTAINER --- */}
+              <div className="w-8 h-8 sm:w-12 sm:h-12 relative flex-shrink-0 [perspective:1000px]">
+                <motion.div 
+                  className="w-full h-full relative"
+                  style={{ transformStyle: "preserve-3d" }}
+                  animate={{ rotateY: [0, 360] }}
+                  transition={{ 
+                    duration: 8, 
+                    repeat: Infinity, 
+                    ease: "linear" 
                   }}
-                />
-              </motion.div>
+                >
+                  {/* FRONT SIDE OF LOGO */}
+                  <div 
+                    className="absolute inset-0 w-full h-full bg-white rounded-full flex items-center justify-center shadow-lg shadow-yellow-500/30 border-2 border-yellow-500 [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
+                  >
+                    <img
+                      src="/images/oneroute-logo.jpeg"
+                      alt="OneRoute Logo"
+                      className="w-full h-full object-contain p-0.5 rounded-full bg-white"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://ui-avatars.com/api/?name=O&background=eab308&color=0f172a";
+                      }}
+                    />
+                  </div>
+
+                  {/* BACK SIDE OF LOGO */}
+                  <div 
+                    className="absolute inset-0 w-full h-full bg-white rounded-full flex items-center justify-center shadow-lg shadow-yellow-500/30 border-2 border-yellow-500 [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
+                    style={{ transform: "rotateY(180deg)" }}
+                  >
+                    <img
+                      src="/images/oneroute-logo.jpeg"
+                      alt="OneRoute Logo"
+                      className="w-full h-full object-contain p-0.5 rounded-full bg-white"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://ui-avatars.com/api/?name=O&background=eab308&color=0f172a";
+                      }}
+                    />
+                  </div>
+                </motion.div>
+              </div>
+
               <div className="flex flex-col justify-center">
                 <span className="font-extrabold text-[14px] sm:text-xl md:text-2xl tracking-tight text-white whitespace-nowrap leading-tight">
                   OneRoute <span className="text-yellow-500 font-semibold">India Logistics</span>
@@ -162,26 +190,20 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* --- FULL WIDTH 3D RUNNING MARQUEE UNDER NAVBAR --- */}
-        <div className="w-full bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-t border-yellow-500/20 overflow-hidden py-1.5 sm:py-2 shadow-lg perspective-1000">
-           <motion.div
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              className="whitespace-nowrap flex items-center gap-8 sm:gap-16 w-fit pl-8 sm:pl-16"
-           >
-              {[...Array(8)].map((_, i) => (
-                <div key={i} className="flex items-center gap-8 sm:gap-16">
-                  <motion.span 
-                    animate={{ z: [0, 20, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, delay: i * 0.4 }}
-                    className="text-xs sm:text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-500 uppercase tracking-[0.2em] drop-shadow-[0_0_10px_rgba(234,179,8,0.3)] inline-block"
-                  >
-                    Part of Mazhigilvin Groups
-                  </motion.span>
-                  <span className="text-yellow-500/30 text-[10px] sm:text-xs">✦</span>
-                </div>
-              ))}
-           </motion.div>
+        {/* --- STATIC STRIP --- */}
+        <div className="w-full bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-t border-yellow-500/20 py-1.5 sm:py-2 shadow-lg relative select-none">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-12 xl:px-24 grid grid-cols-2 text-center items-center divide-x divide-yellow-500/20">
+            <div className="flex items-center justify-center gap-3 px-2">
+              <span className="text-[10px] sm:text-xs font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-500 uppercase tracking-[0.2em] drop-shadow-[0_0_10px_rgba(234,179,8,0.3)]">
+                Part of Magizhini Groups
+              </span>
+            </div>
+            <div className="flex items-center justify-center gap-3 px-2">
+              <span className="text-[10px] sm:text-xs font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-500 uppercase tracking-[0.2em] drop-shadow-[0_0_10px_rgba(234,179,8,0.3)]">
+                Sri Sitheshwaran Transport
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Mobile Menu Dropdown */}
@@ -211,6 +233,7 @@ export default function Navbar() {
         </AnimatePresence>
       </motion.nav>
 
+      {/* Enquiry Modal */}
       <AnimatePresence>
         {isOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -311,7 +334,6 @@ export default function Navbar() {
                   animate={{ opacity: 1 }}
                   className="relative text-center py-10 flex flex-col items-center justify-center overflow-hidden"
                 >
-                  {/* FIXED: confettiParticles is now correctly utilized to avoid TS error */}
                   {confettiParticles.map((p) => (
                     <motion.div
                       key={p.id}
