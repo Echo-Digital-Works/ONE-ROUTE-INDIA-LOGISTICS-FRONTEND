@@ -109,10 +109,7 @@ export default function Footer() {
             <h3 className="text-lg font-bold text-slate-900 mb-6">Contact us</h3>
             
             <div className="space-y-4 mb-6">
-              <div>
-                <p className="text-sm font-bold text-slate-900">Call :</p>
-                <a href="tel:+919876543210" className="text-sm text-slate-600 hover:text-yellow-500">+91 98765 43210</a>
-              </div>
+              
               <div>
                 <p className="text-sm font-bold text-slate-900">Email:</p>
                 <a href="mailto:contact@oneroute.in" className="text-sm text-slate-600 hover:text-yellow-500">contact@onerouteindia.com</a>

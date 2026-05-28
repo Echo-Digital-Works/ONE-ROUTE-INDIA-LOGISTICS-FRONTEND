@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { Phone, MapPinned, Truck, Route, Brain, Quote } from 'lucide-react';
+import { MapPinned, Truck, Route, Brain, Quote } from 'lucide-react';
 import { useRef, useState } from 'react';
 
 const expertiseItems = [
@@ -177,13 +177,6 @@ function FounderHero() {
 
             {/* CTA */}
             <motion.div variants={fadeUp}>
-              <a
-                href="tel:+919443363384"
-                className="inline-flex items-center gap-2 sm:gap-3 bg-white text-slate-950 font-bold px-4 sm:px-6 py-2.5 sm:py-3 rounded-full hover:bg-yellow-500 transition-all group shadow-xl hover:shadow-[0_10px_30px_-10px_rgba(234,179,8,0.4)] text-xs sm:text-base transform hover:-translate-y-1"
-              >
-                <Phone className="w-3.5 h-3.5 sm:w-5 sm:h-5 group-hover:animate-bounce" />
-                +91 94433 63384
-              </a>
             </motion.div>
           </motion.div>
         </div>

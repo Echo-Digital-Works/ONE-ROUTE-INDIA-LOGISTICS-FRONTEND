@@ -97,7 +97,7 @@ export default function Contact() {
                 {/* Founder 1 */}
                 <div className="space-y-1">
                    <div className="flex items-center gap-2 text-slate-400 text-sm">
-                      <User size={16} className="text-yellow-500" /> Founder
+                      <User size={16} className="text-yellow-500" /> Board of Manager
                    </div>
                    <div className="flex flex-wrap items-center gap-4">
                      <p className="font-bold">Prabu Mohan B.E</p>
@@ -110,7 +110,7 @@ export default function Contact() {
                 {/* Founder 2 */}
                 <div className="space-y-1">
                    <div className="flex items-center gap-2 text-slate-400 text-sm">
-                      <ShieldCheck size={16} className="text-yellow-500" /> Founder
+                      <ShieldCheck size={16} className="text-yellow-500" /> Board of Manager
                    </div>
                    <div className="flex flex-wrap items-center gap-4">
                      <p className="font-bold text-sm sm:text-base">Durairaj Subramani (BBA) Retired Army </p>
